@@ -13,9 +13,3 @@ django-pagination
 South
 django-bcrypt
 
-### Django related registration
-# The registration app is a little out of date - get it from the repo direct....
-# django-registration
--e hg+https://bitbucket.org/ubernostrum/django-registration@fad7080fe769#egg=django-registration
-django-registration-defaults
-

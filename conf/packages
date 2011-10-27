@@ -4,6 +4,3 @@ python-dev
 python-pip
 python-virtualenv
 
-# Some dependencies in requirements.txt are listed as repos, so we need the
-# various repo management tools to fetch them
-mercurial

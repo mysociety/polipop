@@ -15,11 +15,6 @@ urlpatterns += patterns('popit.views',
     url( r'^$', 'home', name='home' ),
 )
 
-# Accounts
-urlpatterns += patterns('',
-    (r'^accounts/', include('registration.backends.default.urls')),
-)
-
 # serve media_root files (only works when settings.DEBUG is True)
 # https://docs.djangoproject.com/en/1.3/howto/static-files/#django.conf.urls.static.static
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
