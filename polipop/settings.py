@@ -20,7 +20,7 @@ for path in paths:
         sys.path.insert(0,path)
 
 # load the mySociety config
-config = yaml.load( base_dir + "/conf/general.yml" )
+config = yaml.load( open(base_dir + "/conf/general.yml", 'r') )
 
 if int(config.get('STAGING')):
     STAGING = True
