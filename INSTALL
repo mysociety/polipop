@@ -1,0 +1,32 @@
+Installation instructions for polipop
+
+== virtualenv ==
+
+Get your virtual environment set up (using virtualenv) so that you have all the
+dependencies installed:
+
+  $ virtualenv ../polipop-virtualenv --no-site-packages
+  $ source ../polipop-virtualenv/bin/activate
+  $ pip install -r requirements.txt
+
+== config ==
+
+Copy 'conf/general.yml-example' to 'conf/general.yml' and edit as needed.
+
+    $ cp conf/general.yml-example conf/general.yml
+    $ nano conf/general.yml
+
+Make sure that you put something random into DJANGO_SECRET_KEY:
+
+    $ tr -dc '[:alnum:]' < /dev/urandom | head -c${1:-64}; echo;
+
+== database ==
+
+Create your database:
+
+    $ createdb -T template_postgis polipop
+    $ cd polipop
+    $ ./manage syncdb
+    $ ./manage migrate
+
+

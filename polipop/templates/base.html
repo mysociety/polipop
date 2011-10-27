@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %} :: Polipop</title>
+        <link href="{{ STATIC_URL }}main.css" media="screen" rel="stylesheet" type="text/css" /> 
+        <link rel="icon" type="image/png" href="{{ STATIC_URL }}favicon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+
+        {% if settings.GOOGLE_ANALYTICS_ACCOUNT %}
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', '{{ settings.GOOGLE_ANALYTICS_ACCOUNT }}']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        {% endif %}
+        
+    </head>
+    <body>
+        <div id="wrapper">
+
+        {% include 'staging_header.html' %}
+
+        <div id="header">
+            <div id="logo">
+                <a href="{% url home %}">polipop</a> <sup><small>αlpha</small></sup>
+            </div>
+
+            <ul>
+                <li>
+                    {% if request.user.is_authenticated  %}
+                        {{ request.user.username }} (<a href="{% url django.contrib.auth.views.logout %}">logout</a>)
+                    {% else %}
+                        <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">login</a>
+                    {% endif %}
+                </li>                 
+            </ul>
+            
+            <br clear="both" />
+
+        </div>
+
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+
+        <div id="footer">
+
+            <ul class="nav">
+                <li><a href="{% url home %}">Home</a></li>
+            </ul>
+
+            <ul class="utilities">
+                <li><a href="https://github.com/mysociety/polipop/issues">issues</a></li>
+                <li><a href="https://github.com/mysociety/polipop/wiki">wiki</a></li>
+                <li><a href="{% url admin:index %}">admin</a></li>
+            </ul>
+
+        </div>
+
+        </div>
+    </body>
+</html>
