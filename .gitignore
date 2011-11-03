@@ -1,2 +1,4 @@
 *.pyc
+*.css
+.sass-cache
 web/down.html

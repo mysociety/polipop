@@ -11,6 +11,9 @@ pip install -r requirements.txt
 # make sure that there is no old code (the .py files may have been git deleted) 
 find . -name '*.pyc' -delete
 
+# Compile the CSS
+sass --scss --update --style compressed .
+
 # go to the project directory for local config
 cd ./polipop
 

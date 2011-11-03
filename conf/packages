@@ -4,3 +4,6 @@ python-dev
 python-pip
 python-virtualenv
 
+# Used for sass
+libhaml-ruby
+
