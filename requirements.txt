@@ -3,7 +3,7 @@
 # more details: http://www.pip-installer.org/en/latest/requirements.html
 
 ### General useful bits
-py-bcrypt
+http://py-bcrypt.googlecode.com/files/py-bcrypt-0.2.tar.gz
 PyYAML
 psycopg2
 
