@@ -12,7 +12,6 @@ base_dir = os.path.abspath( os.path.split(__file__)[0] + '/..' )
 paths = (
     os.path.normpath(base_dir + "/"),
     os.path.normpath(base_dir + "/pylib"),
-    os.path.normpath(base_dir + "/commonlib/pylib"),
 )
 
 for path in paths:

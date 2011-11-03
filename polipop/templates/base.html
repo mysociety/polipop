@@ -3,7 +3,6 @@
     <head>
         <title>{% block title %}{% endblock %} :: Polipop</title>
         <link href="{{ STATIC_URL }}main.css" media="screen" rel="stylesheet" type="text/css" /> 
-        <link rel="icon" type="image/png" href="{{ STATIC_URL }}favicon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 
         {% if settings.GOOGLE_ANALYTICS_ACCOUNT %}
@@ -32,19 +31,6 @@
             <div id="logo">
                 <a href="{% url home %}">polipop</a> <sup><small>αlpha</small></sup>
             </div>
-
-            <ul>
-                <li>
-                    {% if request.user.is_authenticated  %}
-                        {{ request.user.username }} (<a href="{% url django.contrib.auth.views.logout %}">logout</a>)
-                    {% else %}
-                        <a href="{% url django.contrib.auth.views.login %}?next={{request.path}}">login</a>
-                    {% endif %}
-                </li>                 
-            </ul>
-            
-            <br clear="both" />
-
         </div>
 
         <div id="content">
