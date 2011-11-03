@@ -3,14 +3,10 @@
 # abort on any errors
 set -e
 
-# create/update the virtual environment
-pip install \
-    -q \
-    -E ../polipop-virtualenv \
-    -r requirements.txt
-
-# use the virtualenv just created/updated
+# create the virtual environment, install/update required packages
+virtualenv --no-site-packages ../polipop-virtualenv
 source ../polipop-virtualenv/bin/activate
+pip install -r requirements.txt
 
 # make sure that there is no old code (the .py files may have been git deleted) 
 find . -name '*.pyc' -delete
