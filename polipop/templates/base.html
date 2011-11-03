@@ -1,8 +1,9 @@
+{% load version %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>{% block title %}{% endblock %} :: Polipop</title>
-        <link href="{{ STATIC_URL }}main.css" media="screen" rel="stylesheet" type="text/css" /> 
+        <link href="{{ STATIC_URL }}{% version 'css/main.css' %}" media="screen" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 
         {% if settings.GOOGLE_ANALYTICS_ACCOUNT %}

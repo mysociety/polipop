@@ -171,6 +171,7 @@ INSTALLED_APPS = (
     'south',
     'pagination',
 
+    'common',
     'popit',
 )
 
