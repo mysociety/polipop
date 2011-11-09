@@ -234,3 +234,8 @@ MAPIT_URL = config.get('MAPIT_URL')
 HTTPLIB2_CACHE_DIR = os.path.abspath( base_dir + '/../httplib2_cache' )
 GOOGLE_ANALYTICS_ACCOUNT = config.get('GOOGLE_ANALYTICS_ACCOUNT')
 
+MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
+MARKITUP_SET = 'markitup/sets/markdown'
+
+
+
