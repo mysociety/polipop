@@ -32,9 +32,9 @@ class Person(ModelBase):
         except:
             return 'Unknown'
 
-    #@models.permalink
-    #def get_absolute_url(self):
-    #    return ( 'person', [ self.id ] )
+    @models.permalink
+    def get_absolute_url(self):
+        return ( 'person', (), { 'pk': self.id, 'slug': self.slug } )
 
     #def is_mp(self):
     #    """Return the mp position if this person is an MP, else None"""

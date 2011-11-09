@@ -12,9 +12,9 @@ urlpatterns = patterns('',
         model=Person,
         context_object_name='person_list',
     )),
-    (r'^person/(?P<pk>.*?)/(?P<slug>.*)$', DetailView.as_view(
+    url(r'^person/(?P<pk>.*?)/(?P<slug>.*)$', DetailView.as_view(
         model=Person,
-    )),
+    ), name='person'),
 
     (r'^organisations$', ListView.as_view(
         model=Organisation,
