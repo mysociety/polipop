@@ -26,13 +26,15 @@ class PersonDataKeyAdmin(admin.ModelAdmin):
 class PersonAdmin(admin.ModelAdmin):
     inlines       = [ PersonNameInlineAdmin, PersonCodeInlineAdmin, PersonDataInlineAdmin, PositionInlineAdmin ]
     list_display  = [ 'slug', 'name', 'date_of_birth' ]
-    search_fields = [ 'name' ]
+    search_fields = [ 'names__name' ]
 
 admin.site.register( models.Person, PersonAdmin )
 admin.site.register( models.PersonDataKey, PersonDataKeyAdmin )
 
 # Orgs
 
+class OrgNameInlineAdmin(admin.TabularInline):
+    model = models.OrganisationName
 class OrgCodeInlineAdmin(admin.TabularInline):
     model = models.OrganisationCode
 class OrgDataInlineAdmin(admin.TabularInline):
@@ -43,10 +45,9 @@ class OrgDataKeyAdmin(admin.ModelAdmin):
     pass
 
 class OrganisationAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("name",)}
-    inlines       = [ OrgCodeInlineAdmin, OrgDataInlineAdmin, PositionInlineAdmin ]
+    inlines       = [ OrgNameInlineAdmin, OrgCodeInlineAdmin, OrgDataInlineAdmin, PositionInlineAdmin ]
     list_display  = [ 'slug', 'name' ]
-    search_fields = [ 'name' ]
+    search_fields = [ 'names__name' ]
 
 admin.site.register( models.Organisation, OrganisationAdmin )
 admin.site.register( models.OrganisationDataKey, OrgDataKeyAdmin )
