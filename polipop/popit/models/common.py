@@ -25,6 +25,16 @@ class ModelBase(models.Model):
         )
         return url
 
+class CodeType(ModelBase):
+    type = models.CharField(max_length=100)
+    desc = models.CharField(max_length=200)
+
+    class Meta:
+        app_label = 'popit'
+
+    def __unicode__(self):
+        return self.type
+
 class DataKey(ModelBase):
     name = models.CharField(max_length=200, db_index=True)
 

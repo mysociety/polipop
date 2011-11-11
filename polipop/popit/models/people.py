@@ -8,7 +8,7 @@ from django.template.defaultfilters import slugify
 from django_date_extensions.fields import ApproximateDateField
 from markitup.fields import MarkupField
 
-from popit.models import ModelBase, DataKey, Data, date_help_text
+from popit.models import ModelBase, DataKey, Data, date_help_text, CodeType
 
 class Person(ModelBase):
     slug            = models.SlugField(editable=False)
@@ -83,7 +83,7 @@ class PersonName(ModelBase):
 
 class PersonCode(ModelBase):
     person      = models.ForeignKey(Person, related_name='codes')
-    type        = models.CharField(max_length=100)
+    type        = models.ForeignKey(CodeType)
     code        = models.CharField(max_length=100)
 
     class Meta:

@@ -5,7 +5,7 @@ from django.contrib.gis.db import models
 from django_date_extensions.fields import ApproximateDateField
 from markitup.fields import MarkupField
 
-from popit.models import ModelBase, DataKey, Data, date_help_text
+from popit.models import ModelBase, DataKey, Data, date_help_text, CodeType
 
 class Organisation(ModelBase):
     name    = models.CharField(max_length=200)
@@ -37,7 +37,7 @@ class OrganisationData(Data):
 
 class OrganisationCode(models.Model):
     organisation    = models.ForeignKey(Organisation, related_name='codes')
-    type            = models.CharField(max_length=100)
+    type            = models.ForeignKey(CodeType)
     code            = models.CharField(max_length=100)
 
     class Meta:
