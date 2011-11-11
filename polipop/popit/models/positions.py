@@ -12,19 +12,28 @@ from markitup.fields import MarkupField
 
 from popit.models import ModelBase, date_help_text, Person, Organisation, DataKey, Data
 
-class PositionType(ModelBase):
-    category_choices = (
-        ('political', 'Political'),
-        ('education', 'Education (as a learner)'),
-        ('other',     'Anything else'),
-    )
+class PositionCategory(ModelBase):
+    #category_choices = (
+    #    ('political', 'Political'),
+    #    ('education', 'Education (as a learner)'),
+    #    ('other',     'Anything else'),
+    #)
+    category = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = [ 'category' ]
+        app_label = 'popit'
+
+    def __unicode__(self):
+        return self.category
+
+class PositionType(ModelBase):
     name            = models.CharField(max_length=100)
     slug            = models.SlugField()
     summary         = MarkupField(blank=True, default='')
     requires_place  = models.BooleanField(default=False, help_text="Does this job type require a place to complete the position?")
     organisation    = models.ForeignKey(Organisation, null=True, blank=True)
-    category        = models.CharField(max_length=20, choices=category_choices, default='other', help_text="What sort of position is this?")
+    category        = models.ForeignKey(PositionCategory, null=True, blank=True, help_text="What sort of position is this?")
 
     class Meta:
         ordering = [ "name" ]
